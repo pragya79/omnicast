@@ -1,0 +1,75 @@
+/* navbar.css */
+.navbar {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Black glass effect */
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  transition: background 0.3s ease;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.navbar ul li {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.navbar ul li a {
+  color: #5ed1ff; /* Light blue */
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar ul li a:hover {
+  color: #2aaeff; /* Brighter blue */
+  transform: translateY(-3px);
+}
+
+.navbar ul li a.active {
+  color: #2aaeff; /* Active link color */
+  font-weight: bold;
+}
+
+.navbar ul li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 3px;
+  background: #2aaeff;
+  transition: all 0.3s ease;
+}
+
+.navbar ul li:hover::after,
+.navbar ul li a.active::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .navbar {
+    padding: 10px;
+  }
+}
