@@ -6,7 +6,8 @@ import "./navbar.css";
 
 const Navbar = ({ isLoggedIn, userData, handleLogout }) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-
+  
+  console.log(userData)
   return (
     <motion.nav
       className="navbar"
@@ -15,6 +16,16 @@ const Navbar = ({ isLoggedIn, userData, handleLogout }) => {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <ul>
+      {isLoggedIn && (
+            <motion.li
+              whileHover={{ scale: 1.1, rotateY: 10 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+                <img src="/omnicast-logo.png" alt="" />
+              </NavLink>
+            </motion.li>
+      )}
         <motion.li
           whileHover={{ scale: 1.1, rotateY: 10 }}
           whileTap={{ scale: 0.9 }}

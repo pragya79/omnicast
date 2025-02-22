@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./starter.css";
+import Circle from "../Circle/Circle";
 
 const Starter = () => {
   const navigate = useNavigate();
@@ -15,7 +16,6 @@ const Starter = () => {
         text.style.transform = `translateY(${value * 2}px)`;
         bg.style.transform = `scale(${1 + value * 0.001})`;
       }
-
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -26,6 +26,15 @@ const Starter = () => {
     <div>
       <section className="parallax">
         <div className="background"></div>
+        <Circle/>
+        <div className="cube">
+          <div className="face front"></div>
+          <div className="face back"></div>
+          <div className="face left"></div>
+          <div className="face right"></div>
+          <div className="face top"></div>
+          <div className="face bottom"></div>
+        </div>
         <h2 id="text">OmniCast</h2>
       </section>
 
@@ -47,14 +56,10 @@ const Starter = () => {
         <p>
           Ready to explore the future of digital broadcasting? **Scroll down** to start your journey!
         </p>
-        <button
-        id="login-btn"
-        onClick={() => navigate("/login")}
-      >
-        Get Started
-      </button>
+        <button id="login-btn" onClick={() => navigate("/login")}>
+          Get Started
+        </button>
       </section>
-      
     </div>
   );
 };

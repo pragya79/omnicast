@@ -78,14 +78,14 @@
     color: white;
   }
   
-  input {
+  input,select{
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 10px;
     font-size: 1rem;
   }
   
-  input:focus {
+  input,select:focus {
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);

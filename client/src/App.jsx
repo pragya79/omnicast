@@ -4,7 +4,9 @@ import Navbar from "./components/Navbar/Navbar";
 import { Notification } from "./components/Notification/Notification";
 import Starter from "./components/Starter/Starter";
 import { Login } from "./components/Login/Login";
-import {useState, useEffect} from "react"
+import {useState, useEffect} from "react";
+import {About} from "./components/About/About";
+import Services from "./components/Services/Services";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +21,6 @@ function App() {
   }, []);
 
   const handleLogout = () => {
-    
     localStorage.removeItem("currentUser");
     setUserData(null);
     setIsLoggedIn(false);
@@ -31,7 +32,9 @@ function App() {
         <div className="app-container">
           <Routes>
             <Route path="/" element={<Starter />} />
-            <Route path="/login" element={<Login/>} />
+            <Route path="/login" element={<Login setUserData={setUserData} setIsLoggedIn={setIsLoggedIn}/>} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
           </Routes>
           <Notification />
         </div>

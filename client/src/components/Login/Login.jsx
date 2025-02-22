@@ -3,10 +3,10 @@ import { toast } from "react-toastify";
 import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword ,signOut} from "../../config/firebase";
 import './login.css';
 import { DropDown } from "../DropDown/DropDown";
+import { useNavigate } from "react-router-dom";
 
 
-
-export const Login = () => {
+export const Login = ({ setUserData, setIsLoggedIn, userData , isLoggedIn}) => {
   const [avatar, setAvatar] = useState({ file: null, url: "" });
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -17,9 +17,8 @@ export const Login = () => {
   const [userRole, setUserRole] = useState("Freelancer");
   const [isRegistering, setIsRegistering] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState(null);
-
+  
+  const navigate = useNavigate();
   useEffect(() => {
     const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
@@ -44,8 +43,8 @@ export const Login = () => {
   const uploadAvatarToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("onmnicast", "omnicast");
-    formData.append("api_key", "696718139813671");
+    formData.append("upload_preset", "omnicast");
+    
   
     try {
       const response = await fetch(`https://api.cloudinary.com/v1_1/du7j4qpni/image/upload`, {
@@ -91,6 +90,7 @@ export const Login = () => {
         setUserData(userDetails);
         setIsLoggedIn(true);
         toast.success("Login successful!");
+        navigate("/services");
       }
     } catch (error) {
       toast.error(error.message);
